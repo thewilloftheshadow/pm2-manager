@@ -1,0 +1,19 @@
+{
+  "name": "narwhal",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha --exit",
+    "start": "node .",
+    "prettier": "npx prettier -c * -w"
+  },
+  "author": "Shadow",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "dotenv": "^8.2.0",
+    "ms": "^2.0.0",
+    "node-cmd": "^4.0.0",
+    "shuffle-array": "^1.0.1"
+  }
+}

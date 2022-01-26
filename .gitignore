@@ -1,0 +1,7 @@
+node_modules/
+.git
+.npm
+*.sqlite
+.env
+pnpm-lock.yaml
+.DS_Store
