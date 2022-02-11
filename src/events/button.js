@@ -9,8 +9,6 @@ command-arg1,arg2,arg3,...arg99
 module.exports = (client) => {
   client.on("interactionCreate", async (interaction) => {
     if (!interaction.isButton()) return
-    client.Sentry.setUser({ id: interaction.user.id, username: `${interaction.user.username}#${interaction.user.discriminator}` })
-
     if (process.env.MAINTENANCE) return interaction.reply({ content: "The bot is currently in maintenance mode. Please try again later.", ephemeral: true })
     
     let data = interaction.customId.split("-")

@@ -11,10 +11,16 @@ const runOutput = (input, options = {}) => {
   })
 }
 
+const rawList = () => {
+  let list = runCmd("pm2 list")
+  return list
+}
+
 const list = () => {
   let lines = runCmd("pm2 list").split("\n")
   lines.splice(0, 3) // remove table headings
   lines.pop() // remove table end
+  if(lines[lines.length - 1].includes("[WARN]")) lines.pop() // remove Not saved warning
   let cleaned = lines.map((x) => x.replace(/ /g, ""))
   let data = cleaned.map((x) => {
     let s = x.split("│")
@@ -46,6 +52,15 @@ const restart = (id) => {
   return true
 }
 
+const stop = (id) => {
+  try {
+    runCmd(`pm2 stop ${id}`)
+  } catch {
+    return false
+  }
+  return true
+}
+
 const logs = (id, lines = 10) => {
   try {
     return runCmd(`pm2 logs ${id} --lines ${lines} --json --nostream`, { timeout: 3000 })
@@ -54,4 +69,4 @@ const logs = (id, lines = 10) => {
   }
 }
 
-module.exports = { list, runCmd, runOutput, restart, logs }
+module.exports = { rawList, list, runCmd, runOutput, restart, stop, logs }
