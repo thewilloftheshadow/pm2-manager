@@ -1,7 +1,7 @@
 const { stop } = require("../pmtwo")
 
 module.exports = async (interaction, client, args) => {
-  interaction.deferUpdate()
+  await interaction.deferUpdate()
 
   interaction.message.edit({ content: "<a:loading:941734498872197191> Stopping process... " })
   await new Promise((x) => setTimeout(x, 3000))
