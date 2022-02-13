@@ -7,6 +7,7 @@ module.exports = {
       name: "process",
       description: "Get process info",
       defaultPermission: true,
+      adminGuild: true,
       options: [
           {
               type: "STRING",
