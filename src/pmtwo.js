@@ -18,6 +18,7 @@ const rawList = () => {
 
 const list = () => {
   let lines = runCmd("pm2 list").split("\n")
+  if(lines[0].includes("PM2+ Activated")) lines.shift() // remove PM2+ Activated
   lines.splice(0, 3) // remove table headings
   lines.pop() // remove table end
   if(lines[lines.length - 1].includes("[WARN]")) lines.pop() // remove Not saved warning
